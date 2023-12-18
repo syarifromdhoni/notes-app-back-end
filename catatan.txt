@@ -1,0 +1,61 @@
+1. buat folder baru dengan nama notes-app-back-end
+2. buka folder tersebut di vscode
+3. buka terminal proyek dan eksekusi perintah npm init --y
+4. pastikan terdapat berkas package.json di folder ini
+5. install package nodemon (dengan tools ini kita tak perlu menjalankan ulang server ketika terjadi perubahan pada berkas javascript) pada devDependencies dengan perintah npm install nodemon --save-dev
+6. pastikan nodemon terpasang dengan memeriksa package.json lebih tepat nya di objek devDependencies
+7. di package.json buat npm runner script baru untuk menjalankan server.js ==> "start": "nodemon server.js"
+8. buatlah file server.js dan test running dengan console.log apa saja
+9. pasang ESLint (tools yang membantu kita untuk menuliskan kode javascript dengan gaya yang konsisten) pada devDependencies dengan cara npm install eslint --save-dev
+10. pastikan eslint terpasang dengan memeriksa package.json lebih tepat nya di objek devDependencies
+11. Sebelum eslint digunakan, Anda perlu melakukan konfigurasi terlebih dahulu dengan mengetik npx eslint --init
+12. Kemudian Anda akan diberikan beberapa pertanyaan, silakan jawab pertanyaan yang ada dengan jawaban berikut:
+    - How would you like to use ESLint? -> To check, find problems, and enforce code style.
+    - What type of modules does your project use? -> CommonJS (require/exports).
+    - Which framework did you use? -> None of these. 
+    - Does your project use TypeScript? -> N.
+    - Where does your code run? -> Node (pilih menggunakan spasi).
+    - How would you like to define a style for your project? -> Use a popular style guide.
+    - Which style guide do you want to follow? -> (Anda bebas memilih, sebagai contoh pilih AirBnB).
+    - What format do you want your config file to be in? -> JSON.
+    - Would you like to …… (seluruh pertanyaan selanjutnya) -> Y.
+13. Setelah menjawab seluruh pertanyaan yang diberikan, maka akan terbentuk berkas konfigurasi eslint dengan nama .eslintrc.json.
+14. di berkas package.json pada objek script tambahkan "lint": "eslint ./"
+15. jalankan perintah npm run lint pada terminal proyek lalu perhatikan hasil nya
+16. Selanjutnya kita masuk ke pembuatan proyek
+17. Buat folder src dan buat file didalam nya yang berisi : 
+    server.js : Memuat kode untuk membuat, mengonfigurasi, dan menjalankan server HTTP menggunakan Hapi.
+    routes.js : Memuat kode konfigurasi routing server seperti menentukan path, method, dan handler yang digunakan.
+    handler.js : Memuat seluruh fungsi-fungsi handler yang digunakan pada berkas routes.
+    notes.js : Memuat data notes yang disimpan dalam bentuk array objek.
+18. Pada package.json, "start": "nodemon ./src/server.js"
+19. Pada file server.js tuliskan kode standard seperti kode kode sebelumnya
+20. Selanjutnya kita buat kode yang dapat menyimpan catatan di file routes.js, notes.js dan handler
+21. untuk id yang random, kita gunakan pihak ketiga, npm install nanoid@3. Setelah itu untuk mendapatkan id import nanoid dan gunakan "nanoid()"
+22. Selanjutnya properti createdAt dan updatedAt. Karena kasus sekarang adalah menambahkan catatan baru, maka nilai kedua properti tersebut seharusnya sama. Jadi, kita bisa secara mudah memberikan nilai new Date().toISOString();
+
+
+
+
+{
+  "name": "notes-app-back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/server.js"
+    // "lint": "eslint ./"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    // "eslint": "^8.55.0",
+    // "eslint-config-airbnb-base": "^15.0.0",
+    // "eslint-plugin-import": "^2.29.0",
+    "nodemon": "^3.0.2"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^21.3.2"
+  }
+}
